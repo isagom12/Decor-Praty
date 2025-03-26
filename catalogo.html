@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - DecorPraty</title>
+    <link rel="stylesheet" href="catalogo.css">
+</head>
+<body>
+    <header>
+        <h1>Catálogo</h1>
+        <nav>
+            <a href="#">Aniversários</a>
+            <a href="#">Sociais</a>
+            <a href="#">Informativas</a>
+            <a href="#">Temáticas</a>
+            <a href="#">Sazonais</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="catalog">
+            <!-- First Row -->
+            <div class="catalog-row">
+                <div class="catalog-item">
+                    <img src="./imagens-catalogo/temas-femininos.png" alt="Temas Femininos">
+                    <button class="btn-femininos">Temas Femininos</button>
+                </div>
+                <div class="catalog-item">
+                    <img src="./imagens-catalogo/temas-masculinos.png" alt="Temas Masculinos">
+                    <button class="btn-masculinos">Temas Masculinos</button>
+                </div>
+                <div class="catalog-item">
+                    <img src="./imagens-catalogo/temas-baby.png" alt="Temas Baby">
+                    <button class="btn-baby">Temas Baby</button>
+                </div>
+            </div>
+            <!-- Second Row -->
+            <div class="catalog-row">
+                <div class="catalog-item fifteen-item">
+                    <img src="./imagens-catalogo/temas-15-anos.png" alt="Temas 15 anos">
+                    <button class="btn-15-anos">Temas 15 anos</button>
+                </div>
+                <div class="catalog-item">
+                    <img src="./imagens-catalogo/temas-adultos.png" alt="Temas para adultos">
+                    <button class="btn-adultos">Temas para adultos</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 DecorPraty. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        // Add event listeners to buttons for redirection
+        document.querySelector('.btn-femininos').addEventListener('click', () => {
+            window.location.href = 'temas-femininos.html';
+        });
+
+        document.querySelector('.btn-masculinos').addEventListener('click', () => {
+            window.location.href = 'temas-masculinos.html';
+        });
+
+        document.querySelector('.btn-baby').addEventListener('click', () => {
+            window.location.href = 'temas-baby.html';
+        });
+
+        document.querySelector('.btn-15-anos').addEventListener('click', () => {
+            window.location.href = 'temas-15-anos.html';
+        });
+
+        document.querySelector('.btn-adultos').addEventListener('click', () => {
+            window.location.href = 'temas-adultos.html';
+        });
+    </script>
+</body>
+</html>

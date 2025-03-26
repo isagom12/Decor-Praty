@@ -99,46 +99,169 @@ body {
     background-color: var(--amarelo); /* Amarelo no hover */
 }
 
+/* Catalogo Section */
 .catalogo {
-    padding: 3rem 5%;
-    background-color: var(--cor-fundo); /* Fundo roxo na seção catálogo */
+    padding: 40px 20px;
+    background-color: #6b3e8e; /* Purple background */
 }
 
-.catalogo h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--branco); /* Texto branco */
-    height: 100vh;
+/* Decor Praty Title */
+.decor-praty {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff; /* White text to contrast with purple background */
+    margin-bottom: 20px;
+    text-align: left; /* Align to the left as in the design */
 }
 
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+/* Container for Catalogo Card and Grid */
+.catalogo-container {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping on larger screens */
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.card {
-    background-color: var(--branco); /* Fundo branco como padrão para os outros cards */
-    padding: 2rem;
-    border-radius: 15px;
+/* Catalogo Card (Left Side) */
+.card-catalogo {
+    background-color: #f7d154; /* Yellow background */
+    border-radius: 10px;
+    padding: 20px;
     text-align: center;
-    text-decoration-color: #D15076;
+    position: relative;
+    width: 200px;
+    height: 400px; /* Taller to match the grid height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
 }
 
-/* Especifica as cores para os cards específicos */
-.card:nth-child(2) { /* Aniversários0 */
-    background-color: var(--fundo-amarelo-claro); /* Amarelo claro */
+.card-catalogo:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Larger shadow for 3D effect */
 }
 
-.card:nth-child(5) { /* Temáticas (com ícone de máscara) */
-    background-color: var(--amarelo); /* Amarelo forte */
+.card-catalogo img {
+    width: 200px; /* Larger size */
+    height: 200px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2)); /* Shadow for visibility */
 }
 
-.card:nth-child(6) { /* Sazonais0 (com ícone de fantasma) */
-    background-color: var(--fundo-amarelo-claro); /* Amarelo claro */
+.card-catalogo h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #d94f70; /* Pink color for text */
 }
+
+/* Card Grid (Right Side) */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns as in the image */
+    gap: 20px;
+    flex: 1; /* Take up remaining space */
+}
+
+/* Card Styling */
+.card {
+    background-color: #fff; /* Default white background */
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Larger shadow for 3D effect */
+}
+
+.white-bg {
+    background-color: #fff;
+}
+
+.yellow-bg {
+    background-color: #f7d154; /* Yellow background */
+}
+
+.card img {
+    width: 100px; /* Larger size */
+    height: 100px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.2)); /* Shadow for visibility */
+}
+
+.card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #d94f70; /* Pink color for text */
+    line-height: 1.2;
+}
+
+/* Plus Button */
+.plus-btn-wrapper {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px; /* Square shape */
+    height: 30px;
+    background-color: #d94f70; /* Pink background */
+    border-radius: 5px; /* Rounded borders */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10; /* Ensure the button is clickable */
+}
+
+.plus-btn {
+    font-size: 20px;
+    color: #fff; /* White plus sign */
+    pointer-events: none; /* Prevent the "+" from interfering with clicks */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .catalogo-container {
+        flex-direction: column; /* Stack vertically on smaller screens */
+        align-items: center;
+    }
+
+    .card-catalogo {
+        width: 100%;
+        max-width: 300px;
+        height: 200px; /* Shorter height for smaller screens */
+    }
+
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .card-grid {
+        grid-template-columns: 1fr; /* 1 column on very small screens */
+    }
+
+    .decor-praty {
+        font-size: 28px;
+    }
+}
+
 .card h3 {
     font-size: 1.5rem;
 }

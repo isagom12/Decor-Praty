@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temas Femininos - DecorPraty</title>
+    <link rel="stylesheet" href="temas-femininos.css">
+</head>
+<body>
+    <header>
+        <h1>Catálogo</h1>
+        <nav>
+            <a href="catalogo.html">Aniversários</a>
+            <a href="#">Sociais</a>
+            <a href="#">Informativas</a>
+            <a href="#">Temáticas</a>
+            <a href="#">Sazonais</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="catalog">
+            <h2>Categoria: Temas Femininos</h2>
+            <div class="catalog-row">
+                <div class="catalog-item">
+                    <img src="./imagens-catalogo/moranguinho.jpg" alt="Kit festa Moranguinho">
+                    <button class="btn-moranguinho">Kit festa Moranguinho</button>
+                </div>
+                <div class="catalog-item">
+                    <img src="./imagens-catalogo/frozen.jpg" alt="Kit festa Frozen">
+                    <button class="btn-frozen">Kit festa Frozen</button>
+                </div>
+                <div class="catalog-item">
+                    <img src="./imagens-catalogo/barbie.jpg" alt="Kit festa Barbie">
+                    <button class="btn-barbie">Kit festa Barbie</button>
+                </div>
+            </div>
+            <div class="catalog-row">
+                <div class="catalog-item">
+                    <img src="./imagens-catalogo/princesas-disney.jpg" alt="Kit festa Princesas Disney">
+                    <button class="btn-princesas">Kit festa Princesas Disney</button>
+                </div>
+                <div class="catalog-item">
+                    <img src="./imagens-catalogo/tinker-bell.jpg" alt="Kit festa Tinker Bell">
+                    <button class="btn-tinker">Kit festa Tinker Bell</button>
+                </div>
+                <div class="catalog-item">
+                    <img src="./imagens-catalogo/gatinha-marie.jpg" alt="Kit festa Gatinha Marie">
+                    <button class="btn-marie">Kit festa Gatinha Marie</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer> 
+        <p>© 2025 DecorPraty. Todos os direitos reservados.</p> 
+    </footer>
+    <script>
+        const buttons = document.querySelectorAll('.btn-item');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const kitName = button.textContent.toLowerCase().replace(/\s/g, '-');
+                window.location.href = `${kitName}.html`;
+            });
+        });
+    </script>
+</body>
+</html>
