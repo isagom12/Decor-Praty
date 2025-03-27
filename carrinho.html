@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras - DecorPraty</title>
+    <link rel="stylesheet" href="carrinho.css">
+</head>
+<body>
+    <header>
+        <h1>Carrinho de Compras</h1>
+        <nav>
+            <a href="catalogo.html">Aniversários</a>
+            <a href="#">Sociais</a>
+            <a href="#">Informativas</a>
+            <a href="temas-masculinos.html">Temáticas</a>
+            <a href="#">Sazonais</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="cart">
+            <div class="cart-items" id="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-total">
+                <p>Subtotal: <span id="subtotal">R$0,00</span></p>
+                <button class="checkout-btn" onclick="window.location.href='finalizacao.html'">Comprar agora</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 DecorPraty. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Load cart items from localStorage
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsContainer = document.getElementById('cart-items');
+        const subtotalElement = document.getElementById('subtotal');
+
+        // Function to render cart items
+        function renderCart() {
+            cartItemsContainer.innerHTML = '';
+            let subtotal = 0;
+
+            cartItems.forEach((item, index) => {
+                const itemTotal = item.price + (item.entertainmentPrice || 0);
+                subtotal += itemTotal;
+
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-item-details">
+                        <h3>${item.name}</h3>
+                        <p>${item.entertainment ? item.entertainment : ''}</p>
+                        <p>Idade: <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">-</button> <span>${item.quantity}</span> <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">+</button></p>
+                        <p>R$${itemTotal.toFixed(2)}</p>
+                    </div>
+                    <button class="remove-btn" onclick="removeItem(${index})">Excluir item?</button>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+
+            subtotalElement.textContent = `R$${subtotal.toFixed(2)}`;
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+        }
+
+        // Function to update quantity
+        function updateQuantity(index, change) {
+            cartItems[index].quantity += change;
+            if (cartItems[index].quantity <= 0) {
+                cartItems.splice(index, 1);
+            }
+            renderCart();
+        }
+
+        // Function to remove item
+        function removeItem(index) {
+            cartItems.splice(index, 1);
+            renderCart();
+        }
+
+        // Initial render
+        renderCart();
+    </script>
+</body>
+</html>

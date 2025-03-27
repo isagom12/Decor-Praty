@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kit Festa Moranguinho - DecorPraty</title>
+    <link rel="stylesheet" href="kit-moranguinho.css">
+</head>
+<body>
+    <header>
+        <h1>Catálogo</h1>
+        <nav>
+            <a href="catalogo.html">Aniversários</a>
+            <a href="#">Sociais</a>
+            <a href="#">Informativas</a>
+            <a href="temas-femininos.html">Temáticas</a>
+            <a href="#">Sazonais</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="kit-details">
+            <h2>Kit Festa Moranguinho</h2>
+            <div class="kit-content">
+                <div class="kit-image">
+                    <img src="./imagens-catalogo/moranguinho.jpg" alt="Kit Festa Moranguinho">
+                </div>
+                <div class="kit-info">
+                    <p class="price">A partir de R$100,00</p>
+                    <ul>
+                        <li>O kit está incluso no valor:</li>
+                        <li>Trio de cilindros com capas estampadas;</li>
+                        <li>Painel de fundo com capa personalizada;</li>
+                        <li>Decoração personalizada com MDF;</li>
+                        <li>Balões temáticos;</li>
+                        <li>Bonecos e pelúcias.</li>
+                    </ul>
+                    <p>Complementos:</p>
+                    <div class="complements">
+                        <label><input type="radio" name="complement" value="baloes"> Balões</label>
+                        <label><input type="radio" name="complement" value="entretenimento"> Entretenimento</label>
+                    </div>
+                        <div class="entertainment-options" style="display: none;">
+                            <label for="entertainment-type">Escolha o tipo de entretenimento:</label>
+                            <select id="entertainment-type" name="entertainment-type">
+                                <option value="magico">Mágico (+R$50,00)</option>
+                                <option value="palhaco">Palhaço (+R$40,00)</option>
+                                <option value="pintura-facial">Pintura Facial (+R$30,00)</option>
+                                <option value="animador">Animador (+R$45,00)</option>
+                            </select>
+                        </div>
+                    <button class="add-to-cart">Adicionar ao carrinho</button>
+                    <button class="buy-now">Comprar agora</button>
+                </div>
+            </div>
+            <div class="similar-kits">
+                <h3>Outros kits similares:</h3>
+                <div class="similar-kits-row">
+                    <div class="similar-kit-item">
+                        <img src="./imagens-catalogo/barbie.jpg" alt="Kit festa Barbie">
+                        <button class="btn-barbie">Kit festa Barbie</button>
+                    </div>
+                    <div class="similar-kit-item">
+                        <img src="./imagens-catalogo/frozen.jpg" alt="Kit festa Frozen">
+                        <button class="btn-frozen">Kit festa Frozen</button>
+                    </div>
+                    <div class="similar-kit-item">
+                        <img src="./imagens-catalogo/princesas-disney.jpg" alt="Kit festa Princesas Disney">
+                        <button class="btn-princesas">Kit festa Princesas Disney</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 DecorPraty. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const similarButtons = document.querySelectorAll('.similar-kit-item button');
+        similarButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const kitName = button.textContent.toLowerCase().replace(/\s/g, '-').replace('kit-festa-', '');
+                window.location.href = `kit-${kitName}.html`;
+            });
+        });
+    
+        // Show/hide entertainment options and update price
+        const complementRadios = document.querySelectorAll('input[name="complement"]');
+        const entertainmentOptions = document.querySelector('.entertainment-options');
+        const entertainmentSelect = document.querySelector('#entertainment-type');
+        const priceElement = document.querySelector('.price');
+        const addToCartBtn = document.querySelector('.add-to-cart');
+        const buyNowBtn = document.querySelector('.buy-now');
+    
+        let basePrice = 100; // Base price in R$
+        const entertainmentPrices = {
+            magico: 50,
+            palhaco: 40,
+            'pintura-facial': 30,
+            animador: 45
+        };
+        let selectedEntertainment = null;
+        let selectedEntertainmentPrice = 0;
+    
+        complementRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.value === 'entretenimento' && radio.checked) {
+                    entertainmentOptions.style.display = 'block';
+                    updatePrice();
+                } else {
+                    entertainmentOptions.style.display = 'none';
+                    selectedEntertainment = null;
+                    selectedEntertainmentPrice = 0;
+                    priceElement.textContent = `A partir de R$${basePrice},00`;
+                }
+            });
+        });
+    
+        entertainmentSelect.addEventListener('change', () => {
+            const selectedOption = entertainmentSelect.options[entertainmentSelect.selectedIndex];
+            selectedEntertainment = selectedOption.text;
+            selectedEntertainmentPrice = entertainmentPrices[entertainmentSelect.value] || 0;
+            updatePrice();
+        });
+    
+        function updatePrice() {
+            const totalPrice = basePrice + selectedEntertainmentPrice;
+            priceElement.textContent = `A partir de R$${totalPrice},00`;
+        }
+    
+        // Add to cart functionality
+        addToCartBtn.addEventListener('click', () => {
+            const cartItem = {
+                name: 'Kit Festa Moranguinho',
+                price: basePrice,
+                entertainment: selectedEntertainment,
+                entertainmentPrice: selectedEntertainmentPrice,
+                image: './imagens-catalogo/moranguinho.jpg',
+                quantity: 1
+            };
+    
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(cartItem);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            window.location.href = 'carrinho.html';
+        });
+    
+        // Buy now functionality
+        buyNowBtn.addEventListener('click', () => {
+            const cartItem = {
+                name: 'Kit Festa Moranguinho',
+                price: basePrice,
+                entertainment: selectedEntertainment,
+                entertainmentPrice: selectedEntertainmentPrice,
+                image: './imagens-catalogo/moranguinho.jpg',
+                quantity: 1
+            };
+    
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = [cartItem]; // Clear cart and add only this item
+            localStorage.setItem('cart', JSON.stringify(cart));
+            window.location.href = 'finalizacao.html';
+        });
+    </script>
+</body>
+</html>

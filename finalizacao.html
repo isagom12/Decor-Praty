@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalização da Compra - DecorPraty</title>
+    <link rel="stylesheet" href="finalizacao.css">
+</head>
+<body>
+    <header>
+        <h1>Finalização da Compra</h1>
+        <nav>
+            <a href="catalogo.html">Aniversários</a>
+            <a href="#">Sociais</a>
+            <a href="#">Informativas</a>
+            <a href="temas-masculinos.html">Temáticas</a>
+            <a href="#">Sazonais</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="checkout">
+            <div class="checkout-form">
+                <h2>Endereço de Entrega</h2>
+                <form id="checkout-form">
+                    <label for="cep">CEP: *</label>
+                    <input type="text" id="cep" name="cep" required>
+
+                    <label for="nome">Nome Completo: *</label>
+                    <input type="text" id="nome" name="nome" required>
+
+                    <label for="telefone">Telefone: *</label>
+                    <input type="tel" id="telefone" name="telefone" required>
+
+                    <label for="bairro">Bairro: *</label>
+                    <input type="text" id="bairro" name="bairro" required>
+
+                    <label for="cidade">Cidade: *</label>
+                    <input type="text" id="cidade" name="cidade" required>
+
+                    <label for="estado">Estado: *</label>
+                    <input type="text" id="estado" name="estado" required>
+                </form>
+            </div>
+            <div class="checkout-date">
+                <h2>Selecione a Data e Horário da Entrega</h2>
+                <input type="date" id="delivery-date" name="delivery-date" required>
+                <input type="time" id="delivery-time" name="delivery-time" required>
+            </div>
+            <div class="checkout-summary">
+                <h2>Produtos</h2>
+                <div id="checkout-items">
+                    <!-- Checkout items will be dynamically added here -->
+                </div>
+                <p>Subtotal: <span id="subtotal">R$0,00</span></p>
+                <p>Total: <span id="total">R$0,00</span></p>
+            </div>
+            <div class="payment-methods">
+                <h2>Métodos de Pagamento</h2>
+                <button type="button" class="payment-btn">Cartão de débito</button>
+                <button type="button" class="payment-btn">Cartão de crédito</button>
+                <button type="button" class="payment-btn">PIX</button>
+                <button type="submit" form="checkout-form" class="confirm-btn">Fazer Pedido</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 DecorPraty. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Load cart items from localStorage
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        const checkoutItemsContainer = document.getElementById('checkout-items');
+        const subtotalElement = document.getElementById('subtotal');
+        const totalElement = document.getElementById('total');
+
+        // Render checkout items
+        let subtotal = 0;
+        cartItems.forEach(item => {
+            const itemTotal = (item.price + (item.entertainmentPrice || 0)) * item.quantity;
+            subtotal += itemTotal;
+
+            const checkoutItem = document.createElement('div');
+            checkoutItem.classList.add('checkout-item');
+            checkoutItem.innerHTML = `
+                <img src="${item.image}" alt="${item.name}">
+                <div>
+                    <h3>${item.name}</h3>
+                    <p>${item.entertainment ? item.entertainment : ''}</p>
+                    <p>R$${itemTotal.toFixed(2)}</p>
+                </div>
+            `;
+            checkoutItemsContainer.appendChild(checkoutItem);
+        });
+
+        subtotalElement.textContent = `R$${subtotal.toFixed(2)}`;
+        totalElement.textContent = `R$${subtotal.toFixed(2)}`;
+
+        // Form submission (for demonstration purposes)
+        document.getElementById('checkout-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Pedido realizado com sucesso!');
+            localStorage.removeItem('cart'); // Clear cart after purchase
+            window.location.href = 'catalogo.html'; // Redirect to catalog
+        });
+    </script>
+</body>
+</html>

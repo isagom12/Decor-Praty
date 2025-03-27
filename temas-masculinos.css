@@ -8,7 +8,7 @@
 /* Estilo geral do body */
 body {
     font-family: Arial, sans-serif;
-    background-color: #fff7e6; /* Fundo amarelado claro, como no print 291 */
+    background-color: #ffd57b; /* Fundo amarelado claro, como no print 291 */
     color: #333;
     line-height: 1.6;
 }
@@ -102,67 +102,58 @@ main {
     border-radius: 20px; /* Botões mais arredondados */
 }
 
-.btn-moranguinho {
-    background-color: #ff80ab; /* Rosa claro */
+.btn-aranha{
+    background-color: #3836e0; /* Azul */
     color: #fff;
 }
 
-.btn-moranguinho:hover {
-    background-color: #f06292;
+.btn-aranha:hover {
+    background-color: #3836e0; /* Azul */
 }
 
-.btn-moranguinho {
-    background-color: #ff80ab; /* Rosa claro */
+.btn-ben{
+    background-color:#3836e0; /* Azul */
     color: #fff;
 }
 
-.btn-moranguinho:hover {
-    background-color: #f06292;
+.btn-ben:hover{
+   background-color: #3836e0;
 }
 
-.btn-frozen{
-    background-color: #ff80ab; /* Rosa claro */
+.btn-patrulha{
+    background-color:#3836e0; /* Azul */
     color: #fff;
 }
 
-.btn-frozen:hover{
-   background-color: #f06292;
+.btn-patrulha:hover{
+    background-color: #3836e0;
 }
 
-.btn-barbie{
-    background-color: #ff80ab; /* Rosa claro */
+.btn-cebolinha{
+    background-color: #3836e0; /* Azul */
     color: #fff;
 }
 
-.btn-barbie:hover{
-    background-color: #f06292;
+.btn-cebolinha:hover{
+    background-color: #3836e0;
 }
 
-.btn-princesas{
-    background-color: #ff80ab; /* Rosa claro */
+.btn-batman{
+    background-color:#3836e0; /* Azul */
     color: #fff;
 }
 
-.btn-princesas:hover{
-    background-color: #f06292;
-}
-
-.btn-tinker{
-    background-color: #ff80ab; /* Rosa claro */
-    color: #fff;
-}
-
-.btn-tinker:hover{
-    background-color: #f06292;
+.btn-batman:hover{
+    background-color: #3836e0;
 }
  
-.btn-marie{
-    background-color: #ff80ab; /* Rosa claro */
+.btn-toy{
+    background-color: #3836e0; /* Azul */
     color: #fff;
 }
 
-.btn-marie:hover{
-background-color: #f06292;
+.btn-toy:hover{
+background-color:#3836e0;
 }
 
 .btn-item:hover {
@@ -189,7 +180,6 @@ footer {
     width: 100%;
     font-size: 14px;
 }
-
 /* Responsividade */
 @media (max-width: 600px) {
     .catalog-row {
